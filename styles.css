@@ -1,1 +1,79 @@
-/* Empty on purpose. Add styles here. */
+:root {
+  --bg: #2f2f2f;
+  --tile: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  color: #f2f2f2;
+  border-bottom: 1px solid #3a3a3a;
+  background-color: #101010;
+}
+
+.site-name {
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  gap: 18px;
+}
+
+.site-nav a {
+  color: #cfcfcf;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: #ffffff;
+}
+
+.page {
+  padding: 40px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.column {
+  display: grid;
+}
+
+.tile {
+  background: var(--tile);
+  border-radius: 16px;
+  height: 360px;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
