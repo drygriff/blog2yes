@@ -1,5 +1,5 @@
 # blog2yes
-A way to make blogs faster for the one true CS teacher.
+A way to style blogs faster and nicer for the one true CS teacher.
 
 ## Structure
 - `index.html` — main page
