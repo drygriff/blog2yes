@@ -3,13 +3,6 @@ const previewCard = document.querySelector(".output-preview");
 const textInput = document.querySelector(".text-input");
 
 
-function applySettings() {
-
-    previewCard.style.backgroundColor = bgColor;
-    previewCard.style.color = textColor;
-    previewCard.style.fontSize = `${fontSize}px`;
-    previewCard.style.fontFamily = `"${fontFamily}", "Segoe UI", sans-serif`;
-};
 
 function updateOutput() { // Updates HTML directly so users can input HTML if they want
     const bgColor = settingsForm.querySelector('[name="bg-color"]').value;
@@ -20,6 +13,10 @@ function updateOutput() { // Updates HTML directly so users can input HTML if th
     const padding = settingsForm.querySelector('[name="padding"]').value;
 
     let outputText = textInput.textContent;
+
+
+    //italics
+    outputText = outputText.replace(/(?<!\\)\*(.+?)(?<!\\)\*/g, "<i>$1</i>") // replace * with italics (\ will escape)
 
 
     outputText = `<div style="
