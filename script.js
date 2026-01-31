@@ -1,6 +1,8 @@
 const settingsForm = document.querySelector(".settings");
 const previewCard = document.querySelector(".output-preview");
 const textInput = document.querySelector(".text-input");
+const copyButton = document.querySelector(".copy-output");
+const copyStatus = document.querySelector(".copy-status");
 
 
 function getSetting(settingName) {
@@ -9,7 +11,7 @@ function getSetting(settingName) {
 
 function wrapInOuterDiv(textToBeWrapped) {
     return `<div style="
-        width: 800px;
+        width: 700px;
         background-color: ${getSetting("background-color")};
         color: ${getSetting("color")};
         font-size: ${getSetting("font-size")}px;
@@ -22,7 +24,7 @@ function wrapInOuterDiv(textToBeWrapped) {
 function fromMarkdown(mdText) {
 
     //headers
-    inputMd = inputMd.replace(/^(#{1,6}) (.+?)$/gm, `<h${"$1".length}>$2</h${"$1".length}>`);
+    mdText = mdText.replace(/^(#{1,6}) (.+?)$/gm, `<h${"$1".length}>$2</h${"$1".length}>`);
 
 
     // bold
@@ -54,7 +56,30 @@ function updateOutput() { // Updates HTML directly so users can input HTML if th
     return outputText;
 }
 
+function setCopyStatus(message) {
+    if (!copyStatus) return;
+    copyStatus.textContent = message;
+    if (setCopyStatus.timer) {
+        clearTimeout(setCopyStatus.timer);
+    }
+    setCopyStatus.timer = setTimeout(() => {
+        copyStatus.textContent = "";
+    }, 2000);
+}
+
+
+
 
 updateOutput();
 settingsForm.addEventListener("input", updateOutput);
 textInput.addEventListener("input", updateOutput);
+
+copyButton.addEventListener("click", async () => {
+    const outputText = updateOutput();
+    try {
+        await navigator.clipboard.writeText(outputText);
+        setCopyStatus("Copied!");
+    } catch (error) {
+        setCopyStatus("Copy failed");
+    }
+});

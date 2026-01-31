@@ -73,10 +73,52 @@ body {
 }
 
 .column.output {
-  flex: 0 0 860px;
+  flex: 0 0 760px;
+}
+
+.column.output .tile {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.output-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.copy-output {
+  border: 1px solid #303030;
+  background: #161616;
+  color: #f2f2f2;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.copy-output:hover {
+  border-color: #4a4a4a;
+}
+
+.copy-output:focus {
+  outline: 2px solid #3a3a3a;
+  outline-offset: 2px;
+}
+
+.copy-status {
+  color: #a0a0a0;
+  font-size: 0.9rem;
 }
 
 .output-preview {
+  width: 100%;
+  flex: 1;
+  min-height: 200px;
+}
+
+.output-preview div {
   width: 100%;
   height: 100%;
 }
