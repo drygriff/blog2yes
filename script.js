@@ -24,7 +24,27 @@ function wrapInOuterDiv(textToBeWrapped) {
 function fromMarkdown(mdText) {
 
     //headers
-    mdText = mdText.replace(/^(#{1,6}) (.+?)$/gm, `<h${"$1".length}>$2</h${"$1".length}>`);
+    const sharedHeaderStyle = `color:${getSetting("color")}; font-family:'${getSetting("font-family")}', 'Segoe UI', sans-serif;`;
+    const fontSize = Number(getSetting("font-size"));
+    const h1Size = Number(getSetting("h1-size"));
+    const h2Size = Number(getSetting("h2-size"));
+
+    mdText = mdText.replace(/^(#{1,6}) (.+?)$/gm, (match, hashes, headerText) => {
+        const hashNum = hashes.length;
+
+        if (hashNum == 1) return `<h1 style="${sharedHeaderStyle}font-size:${h1Size}px;">${headerText}</h1>`
+
+        let hnSize = h2Size + ((fontSize - h2Size) * (hashNum-2)/5) // lerp from h2 to normal text size for remaining headers
+        return `<h${hashNum} style="${sharedHeaderStyle}font-size:${hnSize}px;">${headerText}</h${hashNum}>`
+    });
+        
+        
+    /*    `<h${"$1".length} style="
+        color: ${fontColor};
+        font-family: '${fontFamily}', 'Segoe UI', sans-serif;
+        font-size: ${getSetting("font-size")}px;
+    ">$2</h${"$1".length}>`);
+    */
 
 
     // bold
