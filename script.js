@@ -19,25 +19,27 @@ function wrapInOuterDiv(textToBeWrapped) {
     ">${textToBeWrapped}</div>`;
 }
 
-function fromMarkdown(inputMd) {
+function fromMarkdown(mdText) {
+
     //headers
     inputMd = inputMd.replace(/^(#{1,6}) (.+?)$/gm, `<h${"$1".length}>$2</h${"$1".length}>`);
 
+
     // bold
-    inputMd = inputMd.replace(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/gs, "<strong>$1</strong>");
+    mdText = mdText.replace(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/gs, "<strong>$1</strong>");
     // italics
-    inputMd = inputMd.replace(/(?<!\\)\*(.+?)(?<!\\)\*/gs, "<i>$1</i>");
+    mdText = mdText.replace(/(?<!\\)\*(.+?)(?<!\\)\*/gs, "<i>$1</i>");
 
     // underline
-    inputMd = inputMd.replace(/(?<!\\)__(.+?)(?<!\\)__/gs, "<u>$1</u>");
+    mdText = mdText.replace(/(?<!\\)__(.+?)(?<!\\)__/gs, "<u>$1</u>");
     // strikethrough
-    inputMd = inputMd.replace(/(?<!\\)~~(.+?)(?<!\\)~~/gs, "<strike>$1</strike>");
+    mdText = mdText.replace(/(?<!\\)~~(.+?)(?<!\\)~~/gs, "<strike>$1</strike>");
 
 
     //remove escape key ex: "\*" -> "*"
-    inputMd = inputMd.replace(/\\(.)/g, "$1");
+    mdText = mdText.replace(/\\(.)/g, "$1");
 
-    return inputMd;
+    return mdText;
 }
 
 function updateOutput() { // Updates HTML directly so users can input HTML if they want
@@ -49,6 +51,7 @@ function updateOutput() { // Updates HTML directly so users can input HTML if th
 
     outputText = wrapInOuterDiv(outputText);
     previewCard.innerHTML = outputText;
+    return outputText;
 }
 
 
