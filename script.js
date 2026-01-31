@@ -12,7 +12,7 @@ function updateOutput() { // Updates HTML directly so users can input HTML if th
 
 
     //italics
-    outputText = outputText.replace(/(?<!\\)\*(.+?)(?<!\\)\*/g, "<i>$1</i>") // replace * with italics (\ will escape)
+    outputText = outputText.replace(/(?<!\\)\*(.+?)(?<!\\)\*/g, "<i>$1</i>");
 
 
     outputText = `<div style="
