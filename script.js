@@ -3,15 +3,11 @@ const previewCard = document.querySelector(".output-preview");
 const textInput = document.querySelector(".text-input");
 
 
+function getSetting(settingName) {
+    return settingsForm.querySelector(`[name="${settingName}"]`).value
+}
 
 function updateOutput() { // Updates HTML directly so users can input HTML if they want
-    const bgColor = settingsForm.querySelector('[name="bg-color"]').value;
-    const textColor = settingsForm.querySelector('[name="text-color"]').value;
-    const fontSize = settingsForm.querySelector('[name="font-size"]').value;
-    const fontFamily = settingsForm.querySelector('[name="font-family"]').value;
-    const borderRadius = settingsForm.querySelector('[name="border-radius"]').value;
-    const padding = settingsForm.querySelector('[name="padding"]').value;
-
     let outputText = textInput.textContent;
 
 
@@ -21,12 +17,12 @@ function updateOutput() { // Updates HTML directly so users can input HTML if th
 
     outputText = `<div style="
         width: 800px;
-        background-color: ${bgColor};
-        color: ${textColor};
-        font-size: ${fontSize}px;
-        font-family: '${fontFamily}', 'Segoe UI', sans-serif;
-        border-radius: ${borderRadius}px;
-        padding: ${padding}px;
+        background-color: ${getSetting("background-color")};
+        color: ${getSetting("color")};
+        font-size: ${getSetting("font-size")}px;
+        font-family: '${getSetting("font-family")}', 'Segoe UI', sans-serif;
+        border-radius: ${getSetting("border-radius")}px;
+        padding: ${getSetting("padding")}px;
         ">${outputText}</div>`;
 
     previewCard.innerHTML = outputText;
