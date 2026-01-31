@@ -26,6 +26,40 @@
       <section class="columns">
         <div class="column">
           <div class="tile">
+            <form class="settings" aria-label="Style settings">
+              <div class="settings-heading">Style controls</div>
+              <label class="settings-field">
+                <span>Background color</span>
+                <input type="color" name="bg-color" value="#0f0f0f" />
+              </label>
+              <label class="settings-field">
+                <span>Text color</span>
+                <input type="color" name="text-color" value="#f2f2f2" />
+              </label>
+              <label class="settings-field">
+                <span>Font size</span>
+                <input type="number" name="font-size" value="18" min="12" max="48" step="1" />
+              </label>
+              <label class="settings-field">
+                <span>Font family</span>
+                <select name="font-family">
+                  <option value="Space Grotesk">Space Grotesk</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Garamond">Garamond</option>
+                  <option value="Arial">Arial</option>
+                  <option value="Verdana">Verdana</option>
+                </select>
+              </label>
+              <label class="settings-field">
+                <span>Border Radius</span>
+                <input type="number" name="border-radius" value="20" min="0" max="400" step="1" />
+              </label>
+              <label class="settings-field">
+                <span>Padding</span>
+                <input type="number" name="padding" value="20" min="0" max="400" step="1" />
+              </label>
+            </form>
           </div>
         </div>
         <div class="column">
@@ -33,7 +67,12 @@
             <div class="text-input" aria-label="Draft area" contenteditable="plaintext-only"></div>
           </div>
         </div>
-        <div class="column output"><div class="tile"></div></div>
+        <div class="column output">
+          <div class="tile">
+            <div class="output-preview" aria-label="Style preview">
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 

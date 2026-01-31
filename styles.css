@@ -59,11 +59,7 @@ body {
 
 .column {
   flex: 1 1;
-}
-
-.column.output {
-  width: 800px;
-  flex: 0 0 800px;
+  min-width: 250px;
 }
 
 .tile {
@@ -76,6 +72,70 @@ body {
   height: 100%;
 }
 
+.column.output {
+  flex: 0 0 860px;
+}
+
+.output-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.settings {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  color: #f2f2f2;
+  align-content: start;
+  align-items: start;
+}
+
+.settings-heading {
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #d8d8d8;
+}
+
+.settings-field {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.settings-field span {
+  color: #bdbdbd;
+}
+
+.settings-field input,
+.settings-field select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #303030;
+  background: #161616;
+  color: #f2f2f2;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.settings-field input[type="color"] {
+  padding: 6px;
+  height: 44px;
+  border-radius: 12px;
+  background: #161616;
+}
+
+.settings-field input[type="number"]::-webkit-outer-spin-button,
+.settings-field input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+.settings-field input:focus,
+.settings-field select:focus {
+  outline: 2px solid #3a3a3a;
+  outline-offset: 1px;
+}
+
 .text-input {
   width: 100%;
   height: 100%;
@@ -86,6 +146,10 @@ body {
   background: #2f2f2f;
   color: #f2f2f2;
   font: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .text-input:focus {
