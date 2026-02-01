@@ -37,14 +37,6 @@ function fromMarkdown(mdText) {
         let hnSize = h2Size + ((fontSize - h2Size) * (hashNum-2)/5) // lerp from h2 to normal text size for remaining headers
         return `<h${hashNum} style="${sharedHeaderStyle}font-size:${hnSize}px;">${headerText}</h${hashNum}>`
     });
-        
-        
-    /*    `<h${"$1".length} style="
-        color: ${fontColor};
-        font-family: '${fontFamily}', 'Segoe UI', sans-serif;
-        font-size: ${getSetting("font-size")}px;
-    ">$2</h${"$1".length}>`);
-    */
 
 
     // bold
